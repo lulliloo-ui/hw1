@@ -7,7 +7,7 @@
 #include<iostream>
 
 template< class T >
-T* merge(const T* const * a, size_t sa, const size_t * sai, size_t index, size_t& counter, T* c)
+T * merge(const T * const * a, size_t sa, const size_t * sai, size_t index, size_t & counter, T * c)
 {
   size_t new_counter = 0;
   try {
@@ -28,19 +28,19 @@ T* merge(const T* const * a, size_t sa, const size_t * sai, size_t index, size_t
 
 
 template< class T >
-T* merge(const T* const * a, size_t sa, const size_t * sai, T* c)
+T* merge(const T * const * a, size_t sa, const size_t * sai, T * c)
 {
   size_t max = 0;
-  for(size_t i = 0; i < sa; ++i) {
+  for (size_t i = 0; i < sa; ++i) {
     if(max < sai[i]) {
       max = sai[i];
     }
   }
 
-  T* end = c;
+  T * end = c;
   size_t counter = 0;
   try {
-    for(size_t i = 0; i < max; ++i) {
+    for (size_t i = 0; i < max; ++i) {
       end = merge(a, sa, sai, i, counter, end);
     }
   } catch(...) {
@@ -56,14 +56,14 @@ int main()
   int arr2[] = {2, 5, 8};
   int arr3[] = {3, 6, 9};
   
-  const int* arrays[] = {arr1, arr2, arr3};
+  const int * arrays[] = {arr1, arr2, arr3};
   size_t sizes[] = {3, 3, 3};
   
   int result[9] = {0};
   
-  int* end = merge(arrays, 3, sizes, result);
+  int  * end = merge(arrays, 3, sizes, result);
   size_t size = end - result;
-  std::cout << result[1];
+  std::cout << result[0];
   for (size_t i = 1; i < size; ++i) {
     std::cout << " " << result[i];
   }
